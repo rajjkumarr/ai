@@ -1,39 +1,46 @@
-# 🤖 AI Fundamentals — Days 1–4
+# 🤖 AI Fundamentals — Days 1–5
 
 > A simple, visual learning path from **AI history → Machine Learning → Deep Learning → Transformers → LLMs → Tokens → Embeddings → RAG → Agentic AI**.
 >
-> These notes are based on the four study documents and rewritten for easier understanding, revision, and interview preparation.
+> The notes are organized for **understanding first, revision second, interview preparation third**. Each day connects to the next.
 
-## 🧭 The 4-Day Journey
+## 🧭 The Learning Journey
 
 ```text
-DAY 1
-AI Evolution
-    ↓
-AI → ML → Deep Learning → Transformers → LLMs
-    ↓
-Generative AI → Multimodal AI → Agentic AI
+DAY 1 — WHERE AI CAME FROM
+AI → ML → Deep Learning → NLP → Transformers → LLMs
+                                   ↓
+                         Generative / Multimodal / Agentic AI
 
-DAY 2
-How an LLM answers
-    ↓
+DAY 2 — HOW AN LLM ANSWERS
 Prompt → Context → Next-token generation → Response
-    ↓
-Training / Inference / Hallucination / Tools / RAG
+                    ↓
+          Training / Inference / Hallucination / Tools / RAG
 
-DAY 3
-How text enters an LLM
-    ↓
+DAY 3 — HOW TEXT ENTERS AN LLM
 Text → Tokenizer → Tokens → Token IDs
-    ↓
-BPE → Vocabulary → Context Window
+                    ↓
+           Vocabulary / BPE / Context Window
 
-DAY 4
-How AI represents meaning
-    ↓
+DAY 4 — HOW AI REPRESENTS MEANING
 Token ID → Embedding → Context + Position
-    ↓
-Semantic Similarity → Cosine Similarity → Applications
+                    ↓
+       Semantic Similarity / Cosine Similarity / Applications
+
+DAY 5 — WHAT HAPPENS INSIDE A TRANSFORMER
+Embeddings + Position
+        ↓
+Self-Attention
+        ↓
+Residual Connection
+        ↓
+FFN
+        ↓
+Repeat many Transformer blocks
+        ↓
+Logits → Softmax → Next Token
+        ↓
+Add token → Repeat → Complete response
 ```
 
 ---
@@ -76,13 +83,13 @@ Alan Turing proposed the **Imitation Game**, commonly called the Turing Test.
        Human             Machine
 ```
 
-The evaluator communicates with both without knowing which is the machine. If the evaluator cannot reliably tell the difference, the machine is considered to have passed.
+If the evaluator cannot reliably distinguish the machine from the human through conversation, the machine is considered to have passed.
 
-**Important:** Passing the test is evidence of human-like conversational behavior; it does not prove consciousness.
+**Important:** Passing the test shows human-like conversational behavior; it does not prove consciousness.
 
 ## 3. John McCarthy and the Birth of AI as a Field
 
-John McCarthy is credited with coining the term **Artificial Intelligence** in the 1950s. The 1956 Dartmouth workshop is another major milestone in the formal development of AI research.
+John McCarthy is credited with coining the term **Artificial Intelligence** in the 1950s. The 1956 Dartmouth workshop is another major milestone in formal AI research.
 
 ## 4. AI Winter
 
@@ -104,7 +111,7 @@ There were multiple AI winters rather than one single continuous period.
 
 ## 5. Rule-Based / Symbolic AI
 
-The computer is given explicit human-written rules.
+Humans explicitly write rules.
 
 ```text
 IF condition
@@ -118,17 +125,13 @@ IF suspicious email pattern
 THEN increase spam score
 ```
 
-### Main limitation
-
-Real-world problems create huge numbers of combinations. Writing every possible rule becomes difficult to maintain.
-
-That problem helped motivate the move toward **Machine Learning**.
+**Main limitation:** Real-world situations create huge numbers of combinations, so manually writing and maintaining every rule becomes difficult.
 
 ## 6. IBM Deep Blue — 1997
 
 IBM's Deep Blue defeated chess champion Garry Kasparov.
 
-**Why it mattered:** It showed how search, algorithms and computing power could produce extremely strong performance in a complex domain.
+**Why it mattered:** It demonstrated extremely strong performance in a complex domain using search, algorithms and computing power.
 
 **Important:** Deep Blue was not a modern LLM.
 
@@ -136,43 +139,17 @@ IBM's Deep Blue defeated chess champion Garry Kasparov.
 
 **Machine Learning** learns useful patterns from examples/data rather than relying only on manually written rules.
 
-### Traditional approach
-
 ```text
-Human writes rules + Data
-          ↓
-       Program
-          ↓
-        Output
-```
+Traditional:
+Rules + Data → Program → Output
 
-### ML approach
-
-```text
-Data + Examples
-      ↓
- Learning algorithm
-      ↓
-   Learned model
-      ↓
-    Prediction
-```
-
-Example:
-
-```text
-Cat images + Dog images
-          ↓
-       Training
-          ↓
-   Learned patterns
-          ↓
-New image → Cat / Dog
+ML:
+Data + Examples → Learning → Model → Prediction
 ```
 
 ## 8. Deep Learning
 
-**Deep Learning** is a subset of ML that uses multi-layer artificial neural networks.
+**Deep Learning** is a subset of ML that uses multi-layer neural networks.
 
 ```text
 Machine Learning
@@ -184,13 +161,13 @@ Many layers
 Deep Learning
 ```
 
-Deep networks can automatically learn useful representations/features from data.
+Deep networks can learn useful representations/features from data.
 
 ## 9. Computer Vision — ImageNet & AlexNet
 
 **ImageNet** became an important large-scale image dataset/benchmark.
 
-**AlexNet (2012)** produced a major deep-learning breakthrough in image recognition and helped accelerate the deep-learning revolution.
+**AlexNet (2012)** was a major deep-learning breakthrough in image recognition and helped accelerate modern deep learning.
 
 ## 10. NLP Evolution
 
@@ -208,19 +185,19 @@ Transformers
 
 ### Bag of Words
 
-Converts words to numbers, but largely ignores word order and context.
+Represents words numerically but largely ignores order and full context.
 
 ### N-grams
 
-Captures short word sequences, so it gets some local context, but struggles with long-range relationships.
+Capture short word sequences and some local context, but struggle with long-range relationships.
 
 ### RNN
 
-Processes a sequence step by step and carries previous information forward. Long-term dependencies are still difficult.
+Processes sequence information step by step and carries information forward. Long-term dependencies remain difficult.
 
 ### LSTM
 
-Improves RNNs with mechanisms for retaining important information longer, but remains sequential.
+Improves RNN memory with gating mechanisms, but is still sequential.
 
 ### Transformer
 
@@ -240,12 +217,7 @@ Token B ─────┼──→ Attention → Contextual relationships
 Token C ─────┘
 ```
 
-### Why Transformers changed AI
-
-- Better long-range context handling
-- Parallel processing during training
-- Efficient scaling to large models
-- Foundation for many modern language models
+Transformers became the foundation for many modern language models.
 
 ## 12. Large Language Models (LLMs)
 
@@ -259,7 +231,7 @@ Common capabilities:
 - Question answering
 - Coding
 - Classification
-- Transformation of text
+- Text transformation
 
 ## 13. Generative AI
 
@@ -273,29 +245,17 @@ Generative AI:
 Input → New content
 ```
 
-Possible outputs:
-
-- Text
-- Code
-- Images
-- Audio
-- Video
+Possible outputs include text, code, images, audio and video.
 
 ## 14. ChatGPT Moment — 2022
 
 ChatGPT's public release in November 2022 helped make conversational generative AI widely accessible and accelerated public/industry interest.
 
-Important concepts around assistant systems include:
-
-- Conversation
-- Instruction following
-- RLHF
-- Context/memory features
-- Safety/alignment
+Important surrounding ideas include instruction following, RLHF, conversation/context and safety/alignment.
 
 ## 15. Multimodal AI
 
-Multimodal AI works with more than one type of data.
+Multimodal AI works with more than one data type.
 
 ```text
 Text ─────┐
@@ -323,7 +283,7 @@ Adjust
 Complete task
 ```
 
-### Other major directions
+Other major directions:
 
 - Multimodal AI
 - Multi-agent orchestration
@@ -368,7 +328,7 @@ Response
 
 **Memory line:**
 
-> Search engine = **Retrieve** 🔍  |  LLM = **Generate** 🤖
+> Search engine = **Retrieve** 🔍 | LLM = **Generate** 🤖
 
 ## 18. How Search Engines Find Information
 
@@ -388,14 +348,7 @@ Rank
 Results
 ```
 
-Search results are not automatically true. They may be outdated, misleading or imperfectly ranked.
-
-Good verification habits:
-
-1. Trace back to the original source
-2. Check who published it
-3. Check the date
-4. Compare multiple reliable sources
+Search results are not automatically true. They can be outdated, misleading or imperfectly ranked.
 
 ## 19. How LLMs Generate Responses
 
@@ -415,7 +368,7 @@ Predict next token
 Final response
 ```
 
-This is not random guessing. The model uses patterns learned during training and the context available at inference time.
+The model is not randomly guessing words. It uses learned patterns and available context.
 
 ## 20. What Does an LLM Learn?
 
@@ -431,33 +384,18 @@ Adjust parameters
 Trained model
 ```
 
-The model learns patterns involving things such as:
-
-- Grammar
-- Programming
-- Facts
-- Language structure
-- Relationships between concepts
-- People, places and events
-
-It is not simply a traditional database of facts.
+The model learns patterns involving grammar, programming, facts, language structure and relationships.
 
 ## 21. Knowledge Cutoff
 
-A model has limits related to the information available during training.
+A model has limits related to information available during training.
 
-**Important:** A deployed model does not normally rewrite its internal weights after every conversation.
+A deployed model does not normally rewrite its internal weights after every conversation.
 
 ```text
-Training
-   ↓
-Learned knowledge
-   ↓
-Deployed model
+Training → Learned patterns → Deployed model
 
-Current external information
-   ↓
-Need search / tool / retrieval
+Current external information → Search / Tool / Retrieval
 ```
 
 ## 22. Base Model vs AI Assistant
@@ -474,32 +412,19 @@ Base model
 AI Assistant
 ```
 
-A chatbot product can therefore be much more than just the underlying model.
-
 ## 23. Training vs Inference
 
 ### Training
 
-**Learning**
-
-```text
-Large datasets
- ↓
-Adjust model parameters
- ↓
-Learn patterns
-```
+**Learning / adjusting parameters**
 
 ### Inference
 
-**Using what was learned**
+**Using the trained model to generate output**
 
 ```text
-Prompt
- ↓
-Trained model
- ↓
-Generated answer
+Training:  Data → Learn → Model
+Inference: Prompt → Model → Output
 ```
 
 ## 24. Hallucination
@@ -515,8 +440,8 @@ A **hallucination** is an output that sounds plausible but is unsupported, incor
 - Outdated knowledge
 - False assumptions
 - Unreliable learned patterns
-- Generation is probabilistic
-- The system is designed to generate answers, not act as a perfect truth checker
+- Probabilistic generation
+- The model is a generator, not a perfect truth checker
 
 ### Common types
 
@@ -529,18 +454,9 @@ A **hallucination** is an output that sounds plausible but is unsupported, incor
 
 ## 25. Why Might an AI Say “I Don't Know”?
 
-Possible influences include:
+Possible influences include assistant training, system instructions, weak learned patterns, safety rules, tool requirements and prompt wording.
 
-- Assistant training
-- System instructions
-- Weak learned patterns
-- Safety rules
-- Tool requirements
-- Prompt wording
-
-## 26. The Confidence Illusion
-
-A model can sound certain even when the answer is wrong.
+## 26. Confidence Illusion
 
 ```text
 Confident wording
@@ -548,19 +464,9 @@ Confident wording
 Factual certainty
 ```
 
-For important information:
-
-```text
-Ask for evidence
- ↓
-Check sources
- ↓
-Verify
-```
+For important information, ask for evidence and verify it.
 
 ## 27. Tools Extend AI
-
-Tools can provide capabilities beyond the model's internal learned patterns.
 
 Examples:
 
@@ -604,29 +510,11 @@ LLM
 Answer
 ```
 
-### Example
-
-```text
-Company documents
- ↓
-Split into chunks
- ↓
-Index/retrieve
- ↓
-Relevant policy section
- ↓
-LLM
- ↓
-Employee answer
-```
-
-RAG can improve grounding, but it does **not** guarantee that every answer is correct.
+RAG can improve grounding but does not guarantee perfect correctness.
 
 ## 29. Self-Awareness — Source Boundary
 
-The Day 2 source begins this topic using **training, context, system and tools**, but the final part of that source is incomplete.
-
-So there is **not enough source material to make a complete claim about self-awareness**.
+The Day 2 source starts this topic with **training, context, system and tools**, but the final part is incomplete. The source therefore does not support a complete conclusion about self-awareness.
 
 ---
 
@@ -646,175 +534,108 @@ Token IDs
 Model
 ```
 
-The model works with numerical representations of these token pieces.
+The model works with numerical representations of token pieces.
 
 ## 31. What Is a Token?
 
 A **token is a piece of text defined by a tokenizer**.
 
-A token can be:
-
-- A whole word
-- Part of a word
-- Punctuation
-- Whitespace-related piece
-- Symbol
-- Special/control piece
-- Code fragment
-
-### Critical rule
+It can be a whole word, part of a word, punctuation, whitespace-related piece, symbol or code fragment.
 
 > **Token ≠ Word**
 
-## 32. What Is a Tokenizer?
+## 32. Tokenizer, Vocabulary and Token ID
 
-A **tokenizer** is the program/algorithm/library that converts text into tokens.
+**Tokenizer** = converts text into tokens.
 
-```text
-Sentence
- ↓
-Tokenizer
- ↓
-Token pieces
-```
+**Vocabulary** = collection of token pieces known to that tokenizer.
 
-## 33. What Is a Vocabulary?
-
-The **vocabulary** is the collection of token pieces that a tokenizer knows how to represent.
-
-Simplified:
+**Token ID** = numeric identifier for a token in that vocabulary.
 
 ```text
-"the"  → ID 10
-"AI"   → ID 11
-"love" → ID 12
+Sentence → Tokenizer → Token pieces → Numeric IDs
 ```
 
-## 34. What Is a Token ID?
-
-A **token ID** is the numeric identifier associated with a token in that tokenizer's vocabulary.
-
-### Important distinction
+## 33. Token ID Is Not Meaning
 
 ```text
-Token    = text piece
-Token ID = numeric identifier
+Dog → 8123
+Cat → 123
 ```
 
-The ID itself does **not** mean the semantic meaning of the word.
+The numbers above are IDs. They do not themselves tell the model how related dog and cat are.
+
+## 34. Word vs Character vs Token
+
+- Character = one character/symbol
+- Word = human-readable word
+- Token = tokenizer-defined piece
+
+A word can become multiple tokens.
 
 ## 35. Subword Tokenization
 
-Whole-word vocabulary is impractical because language has an enormous number of possible words.
-
-Subword tokenization solves this by reusing pieces.
+Subword tokenization breaks words into reusable pieces so rare/new words can still be represented.
 
 ```text
-unbreakable
- ↓
-un + break + able
+Rare / new word
+        ↓
+Known subword pieces
+        ↓
+Tokens
+        ↓
+IDs
 ```
-
-The exact split depends on the tokenizer.
 
 ## 36. BPE — Byte Pair Encoding
 
-BPE is a tokenization method that repeatedly merges frequently occurring neighboring pieces.
+BPE repeatedly merges frequently occurring neighboring pieces to create useful subword units.
 
 ```text
 Small pieces
     ↓
-Frequent neighboring pair
+Frequent pair
     ↓
 Merge
     ↓
-Useful subword token
+Useful subword
 ```
 
-The source specifically mentions BPE as part of its tokenization notes.
+## 37. Vocabulary and Token Efficiency
 
-## 37. Why Vocabulary Quality Matters
-
-A useful vocabulary can represent common text efficiently.
-
-```text
-Good token piece
-     ↓
-Fewer tokens
-     ↓
-Better token efficiency
-```
-
-But:
-
-> **Bigger vocabulary ≠ automatically better model**
+A useful vocabulary can reduce token count for some text. But bigger vocabulary is not automatically better.
 
 ## 38. Token Boundaries ≠ Meaning Boundaries
 
-Tokenization is a representation choice.
+A token split is mainly a representation choice; it is not a statement about human concepts.
 
-If:
+## 39. Language and Token Count
 
-```text
-unbelievable
- ↓
-un + believ + able
-```
-
-that does not mean the tokenizer is saying there are three independent semantic concepts.
-
-## 39. Different Languages → Different Token Counts
-
-Token count depends on:
-
-- language
-- script
-- vocabulary
-- word structure
-- tokenizer design
-
-Therefore two equivalent sentences in different languages may use different numbers of tokens.
+Different languages and scripts can produce different token counts because tokenization depends on language structure, writing system and vocabulary.
 
 ## 40. Tokenization Fertility
 
 **Tokenization fertility** describes how many tokens are produced for a text unit.
 
 ```text
-Text unit
- ↓
-Tokenizer
- ↓
-Token count
- ↓
-Fertility
+Text unit → Tokenizer → Token count → Fertility
 ```
 
 Higher fertility = more splitting.
 
-Lower fertility = fewer tokens.
-
 ## 41. Special Tokens / Special Cases
 
-Tokenization can treat these differently:
-
-- Whitespace
-- Capitalization
-- Punctuation
-- Symbols
-- Emoji
-- Code syntax
-
-**Important:** one visible emoji does not necessarily equal one token.
+Whitespace, capitalization, punctuation, symbols, emoji and code can be tokenized differently.
 
 ## 42. Context Window
 
-A **context window** is the maximum amount of tokenized information a model can work with as context for a request.
+A **context window** is the maximum amount of tokenized information a model can work with for a particular request.
 
 Think:
 
 > **Context window = model's working desk**
 
-It can contain things such as:
+Possible context:
 
 ```text
 System instructions
@@ -830,187 +651,107 @@ Tool results
 
 ## 43. What Happens When Context Fills?
 
-Depending on the system, it may:
+Different systems can:
 
 - Truncate old content
-- Summarize old content
+- Summarize older content
 - Retrieve relevant history
 - Use memory/RAG
 - Manage input/output budgets
 
-### Important
+A larger context window does not automatically mean perfect memory.
 
-> **Larger context window ≠ perfect memory**
+## 44. Day 3 Misconceptions
+
+- One token ≠ one word
+- Different models can use different tokenizers
+- Token ID ≠ semantic meaning
+- One emoji ≠ necessarily one token
+- Larger vocabulary ≠ automatically better
+- Larger context ≠ perfect memory
+- More tokens ≠ automatically better answer
 
 ---
 
-# 🧮 DAY 4 — Embeddings & Meaning
+# 🧠 DAY 4 — How AI Represents Meaning
 
-## 44. Token ID vs Meaning
-
-Suppose:
+## 45. Token IDs Do Not Carry Meaning
 
 ```text
-Dog → 8123
-Cat → 123
-```
-
-The numbers alone do not tell us that dogs and cats are related.
-
-```text
+Token
+ ↓
 Token ID
-  ↓
-Identifier
-
-Embedding
-  ↓
-Learned representation
 ```
 
-## 45. Vectorization
+The ID identifies a token but is not a semantic representation.
 
-**Vectorization** means converting information into numerical vectors so mathematical operations can be performed.
+## 46. Vectorization
+
+**Vectorization** is converting information into numerical form so mathematical operations can be performed.
 
 ```text
-Information
- ↓
-Numbers
- ↓
-Vector
+Information → Numbers → Vector → Math
 ```
 
-Examples:
+Example:
 
 ```text
 [2, 5]
-
 [3.8, 6, 7]
-
-[0.12, -3.5, 4.20, -1.24, ...]
+[0.12, -3.5, 4.20, -1.24, -6.81]
 ```
 
-## 46. What Is an Embedding?
+## 47. Embeddings
 
-> **An embedding is a learned numerical vector representation of an item that captures useful relationships with other items.**
-
-Example:
+An **embedding** is a learned numerical vector representation of an item that captures useful relationships with other items.
 
 ```text
-Dog
- ↓
-Embedding model
- ↓
-[0.12, -0.43, 0.78, 0.21, ...]
+Token / item
+     ↓
+Learned embedding
+     ↓
+Vector
+     ↓
+Relationships
 ```
 
-### Important
+## 48. Dimensions
 
-An embedding isn't a dictionary where:
-
-```text
-Dimension 1 = animal
-Dimension 2 = size
-Dimension 3 = color
-```
-
-The useful information is generally distributed across many dimensions.
-
-## 47. What Is a Dimension?
-
-If the vector is:
+A **dimension** is one numerical position in a vector.
 
 ```text
 [0.7, -0.4, 0.8]
+   ↑     ↑     ↑
+ d1    d2    d3
 ```
 
-there are **3 dimensions**.
+Dimensions are learned. Do not assume dimension 1 = “animal” or dimension 2 = “food”. Useful information is distributed across the representation.
 
-A dimension is simply one numerical position in the vector.
+## 49. Why Many Dimensions?
 
-### More dimensions
+More dimensions can provide more capacity to represent complex patterns, but also require more storage and computation.
 
-```text
-More dimensions
-      ↓
-Potentially richer patterns
-      ↓
-More storage + computation
-```
-
-More dimensions are not automatically better.
-
-## 48. How Are Embeddings Learned?
-
-Nobody manually assigns semantic meaning to each dimension.
-
-Instead:
-
-```text
-Training data
-     ↓
-Patterns
-     ↓
-Learning
-     ↓
-Adjusted parameters/representations
-     ↓
-Useful embedding space
-```
-
-Related concepts can become neighbors because the training data repeatedly places them in related contexts.
-
-## 49. Semantic Similarity
+## 50. Semantic Similarity
 
 **Semantic similarity** measures how close two pieces of text are in meaning.
 
-Example:
-
 ```text
 “How do I centre a div?”
-
+        ≈
 “How can I align an HTML element in the middle of its parent?”
 ```
 
-Different wording.
-
-Similar meaning.
-
-Embedding-based retrieval can capture this broader relationship.
-
-## 50. Embedding Space
-
-Imagine each vector as a point in a huge mathematical space.
-
-```text
-        Dog ●
-           \
-            ● Cat
-
-                    ● Car
-```
-
-Related concepts can form neighborhoods.
-
-Real embedding spaces may have hundreds or thousands of dimensions.
+Embedding-based search can compare broader meaning, not only exact words.
 
 ## 51. Cosine Similarity
 
 **Cosine similarity** compares vectors mainly by their direction/angle.
 
 ```text
-A →
-B →
-
-Same direction → high similarity
+Same direction     → high / close to +1
+90° apart          → around 0
+Opposite direction → low / close to -1
 ```
-
-Approximate interpretation:
-
-| Direction | Similarity |
-|---|---:|
-| Same direction | close to +1 |
-| About 90° | around 0 |
-| Opposite direction | close to -1 |
 
 Formula:
 
@@ -1018,242 +759,99 @@ Formula:
 cos(A,B) = (A · B) / (||A|| × ||B||)
 ```
 
-Where:
+It can remain high when vectors have different lengths but similar directions.
 
-- `A · B` = dot product
-- `||A||` = magnitude of A
-- `||B||` = magnitude of B
-
-### Key point
-
-Two vectors can have different lengths and still have high cosine similarity if their directions are similar.
-
-## 52. Similarity ≠ Truth
-
-This is extremely important.
+## 52. Similarity Does NOT Mean Truth
 
 ```text
-High semantic similarity
-        ≠
-Truth
+Similarity ≠ Truth
 ```
+
+Two false statements can be semantically similar. Two texts can be close in topic while disagreeing.
+
+Embeddings do not independently verify truth, intent, quality or safety.
+
+## 53. Token Embedding vs Text Embedding
+
+```text
+Token embedding → one token
+Text embedding  → larger text such as a sentence/document
+```
+
+## 54. Position and Order
+
+Token embeddings tell the model **what token** is present. Positional information helps tell the model **where the token appears**.
+
+```text
+Token embedding
+       +
+Position
+       ↓
+Identity + order
+```
+
+## 55. Static vs Contextual Meaning
+
+A static representation can stay fixed for a token. A contextual representation can change based on surrounding text.
 
 Example:
 
-> "JavaScript is the best language."
-
-and
-
-> "JavaScript is the worst language."
-
-They can be semantically similar because both discuss JavaScript and opinions about it.
-
-Similarity doesn't verify:
-
-- truth
-- quality
-- intent
-- safety
-
-## 53. Visualizing Embeddings
-
-We cannot directly visualize hundreds/thousands of dimensions.
-
-So we can reduce dimensions:
-
 ```text
-High-dimensional vectors
-        ↓
-Dimensionality reduction
-        ↓
-2D / 3D
-        ↓
-Visual clusters
+“I deposited money in the bank.”
+                    ↓
+              financial bank
+
+“We sat on the bank of the river.”
+                    ↓
+              river bank
 ```
 
-The visualization is only an approximation and can lose information.
-
-Your Day 4 source mentions **TensorFlow Projector** for exploring these relationships.
-
-## 54. Token Embedding
-
-```text
-Text
- ↓
-Tokenizer
- ↓
-Token IDs
- ↓
-Token embeddings
-```
-
-Example conceptually:
-
-```text
-I          → [0.12, -0.32, 0.08, ...]
-love       → [0.41, 0.73, -0.12, ...]
-JavaScript → [...]
-```
-
-These values are model-specific and illustrative.
-
-## 55. Token Embedding vs Text Embedding
-
-| | Token embedding | Text embedding |
-|---|---|---|
-| Represents | One token | Larger text unit |
-| Example | `JavaScript` | `I love JavaScript` |
-| Granularity | Small | Larger |
-| Typical use | Model representation | Search/retrieval/similarity |
-
-## 56. Why Position Matters
-
-Consider:
-
-> Dog bites man.
-
-and:
-
-> Man bites dog.
-
-Same words.
-
-Different order.
-
-Different meaning.
-
-Therefore the model needs information about **where the token appears**.
-
-```text
-Token representation
-      +
-Position
-      ↓
-Order-aware representation
-```
-
-## 57. Static vs Contextual Representation
-
-### Static representation
-
-One fixed representation for the word regardless of sentence.
-
-Problem:
-
-> "I deposited money in the bank."
-
-vs
-
-> "We sat on the bank of the river."
-
-The word `bank` has different meanings.
-
-### Contextual representation
-
-The representation can change depending on surrounding words.
-
-```text
-bank + money + deposit
-        ↓
-Finance context
-
-bank + river + water
-        ↓
-River context
-```
-
-## 58. How Modern LLMs Handle Context
-
-Conceptually:
+## 56. How Contextualization Works
 
 ```text
 Initial token representation
-        ↓
+          ↓
 Process surrounding context
-        ↓
-Context-sensitive representation
+          ↓
+Updated/contextual representation
 ```
 
-This is an important connection between **Day 1 Transformers** and **Day 4 embeddings**.
+## 57. Bias in Embeddings
 
-Transformers don't just look at isolated token identities. They build context-sensitive representations by processing relationships between tokens.
-
-## 59. Bias in Embeddings
-
-Human-created training data can contain bias.
-
-Therefore:
+Embeddings learn patterns from data. Human-created data can contain stereotypes, historical inequality and other unwanted associations.
 
 ```text
-Biased data
-   ↓
+Human-created data
+       ↓
 Learned patterns
-   ↓
-Potentially biased representations
+       ↓
+Embeddings
+       ↓
+Possible unwanted associations
 ```
 
-Embeddings do not automatically know which associations humans consider undesirable.
-
-## 60. Where Embeddings Are Used
+## 58. Embedding Applications
 
 ### Semantic Search
 
 ```text
-Query
- ↓
-Query embedding
- ↓
-Compare document embeddings
- ↓
-Most similar results
+Query → Query embedding → Compare document embeddings → Relevant results
 ```
 
 ### Recommendation Systems
 
-```text
-User/item/content
- ↓
-Vectors
- ↓
-Find related vectors
- ↓
-Recommendations
-```
+Represent users/items/content as vectors and find related items.
 
 ### Clustering
 
 ```text
-Many items
- ↓
-Embeddings
- ↓
-Similarity
- ↓
-Clusters
+Many items → Embeddings → Similarity → Clusters
 ```
 
 ### RAG
 
 ```text
-Documents
- ↓
-Chunks
- ↓
-Embeddings
- ↓
-Vector index
-
-User question
- ↓
-Query embedding
- ↓
-Similarity search
- ↓
-Relevant chunks
- ↓
-LLM
- ↓
-Answer
+Documents → Chunks → Embeddings → Retrieve relevant chunks → LLM
 ```
 
 ### Duplicate Detection
@@ -1266,133 +864,939 @@ Use embeddings as useful representations for downstream classifiers.
 
 ### Multimodal Embeddings
 
-Represent information from different modalities such as:
-
-- text
-- image
-- video
+Represent information from multiple modalities such as text, images and video.
 
 ---
 
-# 🔗 THE MOST IMPORTANT CONNECTION ACROSS ALL 4 DAYS
+# 🚀 DAY 5 — TRANSFORMER ARCHITECTURE
 
-This is the part you should truly understand rather than memorize.
+## 59. First Understand the Goal
 
-```text
-                         AI
-                          ↓
-                         ML
-                          ↓
-                   Deep Learning
-                          ↓
-                    Transformers
-                          ↓
-                         LLM
-                          ↓
-              ┌───────────┴───────────┐
-              │                       │
-          Your input              Model knowledge
-              │                       │
-              ▼                       │
-            Text                      │
-              ↓                       │
-         Tokenizer                    │
-              ↓                       │
-           Tokens                     │
-              ↓                       │
-         Token IDs                    │
-              ↓                       │
-        Embeddings                    │
-              ↓                       │
-     Position + Context               │
-              ↓                       │
-     Contextual representation        │
-              └──────────┬────────────┘
-                         ↓
-                     Transformer
-                         ↓
-                Next-token prediction
-                         ↓
-                     Response
-```
+Suppose the user gives the model:
 
-And if the model needs outside information:
+> **"The capital of India is"**
+
+The Transformer must help the model produce the next token, such as:
+
+> **"Delhi"**
+
+Then it generates the next token after that, and continues until the response is complete.
+
+### The complete high-level flow
 
 ```text
-User question
-      ↓
-Need current / private / external information
-      ↓
-Search / Database / Files / RAG / Tool
-      ↓
-Relevant information
-      ↓
-LLM context
-      ↓
-Generated answer
+Sentence
+   ↓
+Tokenizer
+   ↓
+Tokens
+   ↓
+Token IDs
+   ↓
+Embeddings
+   ↓
+Position information
+   ↓
+Transformer blocks
+   ↓
+Final representation
+   ↓
+Linear layer
+   ↓
+Logits
+   ↓
+Softmax
+   ↓
+Next-token probabilities
+   ↓
+Choose next token
+   ↓
+Add token to context
+   ↓
+Repeat
 ```
 
 ---
 
-# ⭐ 60-SECOND INTERVIEW EXPLANATION
+## 60. Step 1 — Sentence → Tokens
 
-> **"An LLM is a large neural-network language model, commonly based on the Transformer architecture. When we give it text, a tokenizer breaks the text into tokens and maps them to token IDs. Token IDs are only identifiers, so the model uses learned numerical representations called embeddings. The model also needs positional and contextual information because the same token can mean different things in different sentences. During inference, the Transformer processes this context and generates the response through next-token prediction. If the application needs current or external information, tools or RAG can retrieve that information and add it to the model's context before generation."**
+Input:
 
----
+> **"The capital of India is"**
 
-# 🎯 FINAL REVISION MAP
+Simplified tokens:
 
 ```text
-AI
-│
-├── ML
-│   └── Deep Learning
-│       └── Transformers
-│           └── LLM
-│
-├── Input side
-│   ├── Tokenizer
-│   ├── Tokens
-│   ├── Token IDs
-│   └── Embeddings
-│
-├── Understanding side
-│   ├── Position
-│   ├── Context
-│   ├── Attention
-│   └── Contextual representations
-│
-├── Generation side
-│   └── Next-token prediction
-│
-└── External knowledge / capability
-    ├── Search
-    ├── Tools
-    ├── Files
-    ├── Databases
-    └── RAG
+The | capital | of | India | is
 ```
 
-## 🧠 If you remember only 15 things
+A real tokenizer may split text differently.
 
-1. **AI** is the broad field.
-2. **ML** learns patterns from data.
-3. **Deep Learning** uses multi-layer neural networks.
-4. **Transformers** use attention to model relationships between tokens.
-5. **LLMs** are large language models built from learned patterns.
-6. **Training** = learning.
-7. **Inference** = using what was learned.
-8. **Token** = piece of text.
-9. **Token ID** = numeric identifier for a token.
-10. **Embedding** = learned numerical vector representation.
-11. **Context** changes how tokens can be represented/interpreted.
-12. **Cosine similarity** compares vector direction.
-13. **Similarity does not prove truth.**
-14. **RAG** = retrieve external information + generate an answer.
-15. **Agentic AI** = AI that can plan, use tools, act and iterate toward a goal.
+## 61. Step 2 — Tokens → Token IDs
+
+Example only:
+
+```text
+The      → 52
+capital  → 1832
+of       → 25
+India    → 781
+is       → 41
+```
+
+So:
+
+```text
+[52, 1832, 25, 781, 41]
+```
+
+Remember: IDs identify tokens; they do not contain semantic meaning.
+
+## 62. Step 3 — Token IDs → Embeddings
+
+The token IDs are used to look up learned vectors.
+
+```text
+India
+  ↓
+[0.7, 0.9, 0.2, -0.1, ...]
+```
+
+Now the model has numerical representations of the tokens.
+
+## 63. Step 4 — Add Position Information
+
+The model also needs order.
+
+```text
+The      → position 1
+capital  → position 2
+of       → position 3
+India    → position 4
+is       → position 5
+```
+
+Conceptually:
+
+```text
+Token representation + position information
+                   ↓
+                input representation
+```
+
+The exact positional mechanism varies by architecture.
 
 ---
 
-## 📚 Source coverage
+# 64. Step 5 — Enter the Transformer
 
-These notes consolidate the four uploaded study documents: AI evolution, LLM generation/inference/hallucination/tools/RAG, tokenization/context windows, and embeddings/semantic similarity/applications. The source PDFs include handwritten diagrams and examples; those concepts have been converted into clean text-based visuals here. The Day 2 self-awareness section is incomplete in the source, so no unsupported conclusion is added.
+Now the token representations enter a stack of Transformer blocks.
+
+A simplified block is:
+
+```text
+Input
+ ↓
+Layer Normalization
+ ↓
+Self-Attention
+ ↓
+Residual Connection
+ ↓
+Layer Normalization
+ ↓
+FFN / MLP
+ ↓
+Residual Connection
+ ↓
+Output
+```
+
+The exact architecture can vary, but this is the key mental model.
+
+---
+
+# 65. Step 6 — Self-Attention
+
+The main question is:
+
+> **Which other tokens are useful for understanding this token?**
+
+For:
+
+> **The capital of India is**
+
+information from `capital` and `India` can be useful when predicting what comes next.
+
+Conceptually:
+
+```text
+The      ↔
+capital  ↔
+of       ↔
+India    ↔
+is       ↔
+```
+
+The tokens can exchange information through attention.
+
+### Easy definition
+
+> **Self-attention lets tokens look at other tokens in the same sequence and combine useful information.**
+
+---
+
+# 66. Query, Key and Value — Simple Intuition
+
+Attention creates three learned representations:
+
+### Query (Q)
+
+> **What information am I looking for?**
+
+### Key (K)
+
+> **What kind of information do I contain?**
+
+### Value (V)
+
+> **What information should I provide if I am relevant?**
+
+Think of a library:
+
+```text
+Your question = Query
+Book topic     = Key
+Book content   = Value
+```
+
+This is an intuition, not a literal conversation between words.
+
+---
+
+# 67. How Q, K and V Are Created
+
+Starting with input representations `X`:
+
+```text
+Q = XWQ
+K = XWK
+V = XWV
+```
+
+Where `WQ`, `WK` and `WV` are learned weight matrices.
+
+The important idea:
+
+> The model learns how to transform representations into queries, keys and values.
+
+---
+
+# 68. Attention Scores
+
+The model compares Queries with Keys.
+
+Conceptually:
+
+```text
+Query
+  ↓
+Compare with Keys
+  ↓
+Attention scores
+```
+
+The scores answer:
+
+> **How strongly should this token use information from another token?**
+
+---
+
+# 69. Attention Softmax
+
+The attention scores are scaled and passed through softmax.
+
+```text
+QKᵀ
+ ↓
+Scale by √dₖ
+ ↓
+Softmax
+ ↓
+Attention weights
+```
+
+The weights can look conceptually like:
+
+```text
+Token A → 10%
+Token B → 20%
+Token C → 70%
+```
+
+These numbers tell us how strongly information from each Value should contribute.
+
+### Why divide by √dₖ?
+
+Scaling keeps the attention scores at a useful numerical range and helps training remain stable.
+
+---
+
+# 70. Apply the Weights to Values
+
+The attention weights are applied to the Value vectors.
+
+```text
+Attention weights
+       ↓
+Weighted combination of Values
+       ↓
+Attention output
+```
+
+This is where information from relevant tokens is brought together.
+
+---
+
+# 71. Multi-Head Attention
+
+Instead of one attention operation, Transformers use multiple attention heads.
+
+```text
+                Input
+                  ↓
+       ┌──────────┼──────────┐
+       ↓          ↓          ↓
+     Head 1     Head 2     Head 3   ...
+       ↓          ↓          ↓
+   Attention  Attention  Attention
+       └──────────┼──────────┘
+                  ↓
+             Concatenate
+                  ↓
+          Linear projection
+                  ↓
+              Output
+```
+
+### Why multiple heads?
+
+Different heads can learn different useful patterns/relationships.
+
+Do not assume one fixed human-readable job for every head.
+
+---
+
+# 72. Step 7 — Residual Connection
+
+After attention, the Transformer combines the original representation with the newly processed information.
+
+```text
+Original information
+        +
+New attention information
+        ↓
+Updated representation
+```
+
+Conceptually:
+
+```text
+Input ─────────────────────┐
+  ↓                        ↓
+Attention ───────────────→ ADD
+```
+
+Residual/skip connections help information and gradients move through deep networks effectively.
+
+---
+
+# 73. Step 8 — FFN (Feed-Forward Network)
+
+FFN means **Feed-Forward Network** and is also commonly called an **MLP**.
+
+Its job is:
+
+> **Take the representation produced by attention and transform it further.**
+
+### Easy rule
+
+> **Attention = exchange information**
+>
+> **FFN = process / transform information**
+
+A simplified FFN is:
+
+```text
+Input
+ ↓
+Linear layer
+ ↓
+Nonlinear activation / gating
+ ↓
+Linear layer
+ ↓
+Output
+```
+
+The first linear layer often expands the representation, the nonlinear step gives the network more expressive power, and the second linear layer projects it back toward the model dimension.
+
+The FFN generally processes each token position independently using the same learned network. Attention is what mixes information between token positions.
+
+---
+
+# 74. Why Do We Need Nonlinearity?
+
+If we only used linear transformations, the network would have much less ability to model complex relationships.
+
+Language contains complicated relationships involving:
+
+- grammar
+- syntax
+- references
+- semantics
+- context
+- patterns
+
+The nonlinear part helps the network learn richer transformations.
+
+Modern architectures may use functions/gating such as GELU or SwiGLU; the exact choice depends on the model.
+
+---
+
+# 75. One Complete Transformer Block
+
+```text
+                 Input
+                   ↓
+              LayerNorm
+                   ↓
+         Multi-Head Attention
+                   ↓
+            Residual Add
+                   ↓
+              LayerNorm
+                   ↓
+                FFN
+                   ↓
+            Residual Add
+                   ↓
+                 Output
+```
+
+### Remember the jobs
+
+```text
+Attention → exchange information
+FFN       → transform information
+Residual  → preserve + combine information
+LayerNorm → stabilize processing
+```
+
+---
+
+# 76. Step 9 — Repeat the Transformer Block
+
+One block isn't enough.
+
+```text
+Input
+ ↓
+Transformer Block 1
+ ↓
+Transformer Block 2
+ ↓
+Transformer Block 3
+ ↓
+...
+ ↓
+Transformer Block N
+```
+
+Each block receives the previous representation and transforms it further.
+
+A useful mental model is:
+
+```text
+Layer 1 → basic relationships
+Layer 2 → richer relationships
+Layer 3 → more contextual structure
+...
+Later layers → increasingly rich representations
+```
+
+The real behavior is distributed and more complicated than assigning one human concept to each layer.
+
+---
+
+# 77. Step 10 — Final Representation
+
+After many Transformer blocks, we have rich contextual representations of the sequence.
+
+```text
+Tokens
+  ↓
+Many Transformer blocks
+  ↓
+Final contextual representations
+```
+
+Now the model asks:
+
+> **What token should come next?**
+
+---
+
+# 78. Step 11 — Linear Layer
+
+The final representation is mapped to the vocabulary.
+
+Suppose the vocabulary has 100,000 possible tokens.
+
+The linear layer produces a score for each one.
+
+These raw scores are called **logits**.
+
+Example:
+
+```text
+Delhi      → 8.5
+Mumbai     → 4.2
+London     → 2.1
+Paris      → 1.5
+banana     → -1.2
+...
+```
+
+The numbers are illustrative.
+
+### Important
+
+> **Logit = raw score before probability conversion.**
+
+---
+
+# 79. Step 12 — Softmax
+
+Now we need probabilities.
+
+```text
+Logits
+  ↓
+Softmax
+  ↓
+Probabilities
+```
+
+Example:
+
+```text
+Delhi      → 90%
+Mumbai     → 5%
+London     → 2%
+Paris      → 1%
+...
+```
+
+Softmax converts the raw scores into a probability distribution whose values add up to 1.
+
+### Softmax formula
+
+```text
+Pᵢ = eᶻⁱ / Σⱼ eᶻʲ
+```
+
+You don't need to memorize the formula yet. Remember:
+
+> **Softmax = score → probability**
+
+---
+
+# 80. There Are Two Different Softmax Roles
+
+This is important.
+
+### Softmax inside attention
+
+```text
+Attention scores
+      ↓
+Softmax
+      ↓
+Attention weights
+```
+
+It answers:
+
+> **How much should this token use information from other tokens?**
+
+### Softmax at the output
+
+```text
+Logits
+  ↓
+Softmax
+  ↓
+Next-token probabilities
+```
+
+It answers:
+
+> **How likely is each possible next token?**
+
+Same mathematical function, different purpose.
+
+---
+
+# 81. Step 13 — Choose the Next Token
+
+Suppose:
+
+```text
+Delhi   → 90%
+Mumbai  → 5%
+London  → 2%
+```
+
+The decoding strategy selects a token.
+
+It might choose the highest-probability token, or a sampling strategy can introduce controlled variation.
+
+Suppose the selected token is:
+
+> **Delhi**
+
+Now:
+
+```text
+The capital of India is Delhi
+```
+
+But the model doesn't stop.
+
+---
+
+# 82. Step 14 — Add the Token and Repeat
+
+The new token becomes part of the context.
+
+```text
+The capital of India is
+               ↓
+The capital of India is Delhi
+               ↓
+Predict next token
+               ↓
+Add it
+               ↓
+Predict next token
+               ↓
+...
+```
+
+This is called **autoregressive generation**.
+
+### Simple definition
+
+> The model uses what has already been generated to help predict what comes next.
+
+---
+
+# 83. Causal Attention — Why Future Tokens Are Hidden
+
+GPT-style decoder-only Transformers use causal attention.
+
+When predicting a token, the model cannot look at future tokens that would give away the answer.
+
+For example:
+
+```text
+Position 1 → sees 1
+Position 2 → sees 1, 2
+Position 3 → sees 1, 2, 3
+Position 4 → sees 1, 2, 3, 4
+```
+
+Conceptually:
+
+```text
+          1   2   3   4
+1         ✓   ✗   ✗   ✗
+2         ✓   ✓   ✗   ✗
+3         ✓   ✓   ✓   ✗
+4         ✓   ✓   ✓   ✓
+```
+
+The future is masked.
+
+This allows the model to learn next-token prediction without cheating.
+
+---
+
+# 84. Training vs Generation in a Transformer
+
+### During training
+
+The model can calculate predictions for many positions in parallel while applying the causal mask.
+
+Conceptually:
+
+```text
+Input tokens
+ ↓
+Transformer
+ ↓
+Predict many next-token targets
+ ↓
+Compare with true next tokens
+ ↓
+Loss
+ ↓
+Backpropagation
+ ↓
+Update weights
+```
+
+### During generation
+
+The model usually generates one new token at a time.
+
+```text
+Prompt
+ ↓
+Token 1
+ ↓
+Token 2
+ ↓
+Token 3
+ ↓
+...
+```
+
+This difference is important:
+
+> **Training can be highly parallelized; autoregressive generation is sequential across newly generated tokens.**
+
+---
+
+# 85. The Most Important Transformer Mental Model
+
+Don't try to memorize every equation first.
+
+Remember these three jobs:
+
+```text
+1. ATTENTION
+   → Exchange information between tokens
+
+2. FFN
+   → Transform each token's current representation
+
+3. OUTPUT LAYER
+   → Turn the final representation into next-token probabilities
+```
+
+And the full flow:
+
+```text
+Represent
+   ↓
+Exchange
+   ↓
+Transform
+   ↓
+Repeat
+   ↓
+Predict
+   ↓
+Repeat generation
+```
+
+---
+
+# 🎯 86. Sentence → Next Token: The Entire Process in One Example
+
+Input:
+
+> **"The capital of India is"**
+
+### 1. Tokenize
+
+```text
+The | capital | of | India | is
+```
+
+### 2. Token IDs
+
+```text
+52 | 1832 | 25 | 781 | 41
+```
+
+### 3. Embeddings
+
+```text
+52   → vector
+1832 → vector
+25   → vector
+781  → vector
+41   → vector
+```
+
+### 4. Position
+
+```text
+Token representation + position
+```
+
+### 5. Attention
+
+Tokens exchange useful contextual information.
+
+### 6. FFN
+
+Each token's representation is transformed.
+
+### 7. Repeat
+
+The process continues through many Transformer blocks.
+
+### 8. Final representation
+
+```text
+Rich contextual representation
+```
+
+### 9. Linear layer
+
+```text
+Vocabulary tokens → logits
+```
+
+### 10. Softmax
+
+```text
+Logits → probabilities
+```
+
+### 11. Select
+
+```text
+Delhi → selected next token
+```
+
+### 12. Repeat
+
+```text
+The capital of India is Delhi ...
+```
+
+Then the model predicts the next token again.
+
+---
+
+# 🧠 87. FFN vs Attention vs Softmax
+
+| Component | What it does |
+|---|---|
+| **Attention** | Lets tokens exchange information |
+| **FFN** | Transforms each token's current representation |
+| **Residual** | Preserves and combines information |
+| **LayerNorm** | Helps stabilize processing |
+| **Logits** | Raw scores for possible next tokens |
+| **Softmax** | Converts scores into probabilities |
+| **Decoding** | Selects/samples the next token |
+
+---
+
+# ⭐ 88. FINAL EASY SUMMARY
+
+## The 11-step memory trick
+
+```text
+1. TOKENIZE
+   Break sentence into tokens
+
+2. ID
+   Give every token an ID
+
+3. EMBED
+   Turn IDs into learned vectors
+
+4. POSITION
+   Tell the model the order
+
+5. ATTENTION
+   Let tokens exchange information
+
+6. FFN
+   Transform the information
+
+7. REPEAT
+   Run through many Transformer blocks
+
+8. LOGITS
+   Give every possible next token a score
+
+9. SOFTMAX
+   Turn scores into probabilities
+
+10. PREDICT
+    Choose the next token
+
+11. REPEAT
+    Add the token and predict again
+```
+
+### ⭐ Four words to remember
+
+> **ATTENTION = EXCHANGE**
+>
+> **FFN = TRANSFORM**
+>
+> **SOFTMAX = SCORE → PROBABILITY**
+>
+> **GENERATION = REPEAT**
+
+### ⭐ One-line interview answer
+
+> **A Transformer takes token embeddings plus positional information, repeatedly uses self-attention to exchange contextual information and an FFN to transform representations, then maps the final representation to vocabulary logits, converts them to probabilities with softmax, selects the next token, adds it to the context, and repeats the process to generate the response.**
+
+---
+
+# 📌 89. What You Should Understand Before Moving On
+
+You should now be comfortable explaining these connections:
+
+```text
+Token ID
+   ↓
+Embedding
+   ↓
+Position
+   ↓
+Attention
+   ↓
+Contextual representation
+   ↓
+FFN
+   ↓
+Many Transformer blocks
+   ↓
+Final representation
+   ↓
+Logits
+   ↓
+Softmax
+   ↓
+Next token
+```
+
+And most importantly:
+
+> **Attention does not generate the final answer.**
+>
+> **FFN does not choose the next word.**
+>
+> **Softmax does not understand the sentence.**
+>
+> They each do a different job inside the larger Transformer pipeline.
